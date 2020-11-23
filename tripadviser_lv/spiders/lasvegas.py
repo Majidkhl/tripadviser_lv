@@ -20,11 +20,11 @@ class LasvegasSpider(scrapy.Spider):
             #price = hotel_price('.//text()').get()
 
 
-            # yield{
-            #     'hotel_name': name,
-            #     'hotel_link': absolute_link
-            #     #'hotel_price': price
-            #     }
+            yield{
+                'hotel_name': name,
+                'hotel_link': absolute_link
+                #'hotel_price': price
+                }
 
             yield response.follow(url=absolute_link, callback=self.parse_comment, meta={'hotel_name': name})
 
@@ -35,10 +35,10 @@ class LasvegasSpider(scrapy.Spider):
         for commentaire in comment:
             webcomment = commentaire.xpath('.//span/text()').get()
 
-            yield {
-                'hotel_nmae': name,
-                'webcomment': webcomment,
-                }
+            # yield {
+            #     'hotel_nmae': name,
+            #     'webcomment': webcomment,
+            #     }
 
 
 
